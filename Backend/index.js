@@ -4,6 +4,7 @@ const session = require("express-session")
 const connectDB = require("./configDB")
 const isAuth = require("./Middleware/authCeck")
 const isAdmin = require("./Middleware/adminAuth")
+const path = require("path")
 // dotenv 
 require("dotenv").config({})
 // db connection
