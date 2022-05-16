@@ -1,0 +1,54 @@
+/* header container */
+.header-container {
+    height: 75px;
+    background-color: red;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    z-index: 4000;
+}
+.header-container .row {
+    background-color:  rgb(255, 255, 255);
+}
+/* icon modidy */
+.icon-nombers {
+    font-size: 10px;
+    font-weight: 600;
+    font-style: normal;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    color: white;
+    background-color: #dc3545;
+    border-radius: 50%;
+    top: 4px;
+    right: -10px;
+    text-align: center;
+}
+.icon-container i {
+    position: relative;
+    font-size: 30px;
+}
+.icon-container a {
+    color: black     !important;
+    text-decoration: none;
+}
+.header-container input:focus {
+    outline: none;
+}
+.logo-wraper img {
+    height: 40px;
+}
+
+/* Responsive Mobile */
+@media only screen and (max-width: 768px) {
+    .header-container {
+        height: 100px;
+    }
+    .icon-container i {
+        font-size: 28px;
+    }
+    .logo-wraper img {
+        height: 30px;
+    }
+  }

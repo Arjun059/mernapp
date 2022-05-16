@@ -1,0 +1,28 @@
+.shop-container {
+    max-width: 1400px !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}   
+
+.product-img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+}
+.product-wrapper {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.product-wrapper:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: scale(1.05);
+
+}
+@media (max-width: 768px) {
+.product-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+}
