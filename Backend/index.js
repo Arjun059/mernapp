@@ -34,6 +34,10 @@ app.get("/api/data", (req, res) => {
     res.setHeader("Content-type", "application/json")
     res.status(200).send({hello: 'hello world', boy: "cool boy"});
 })
+app.use(express.static(path.resolve(__dirname, "frontend/build")));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend/build/index.js"))
+})
 
 // server listing at 
 const PORT = process.env.PORT || 8080 

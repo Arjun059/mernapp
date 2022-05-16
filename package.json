@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node Backend/server.js",
+    "start":"npm run build && node Backend/index.js",
     "build": "cd Backend && npm install  && cd ../frontend && npm install && npm run build"
   },
   "author": "",
