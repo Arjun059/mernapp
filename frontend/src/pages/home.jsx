@@ -6,7 +6,9 @@ import "./style/home.css"
 import axios from "axios";
 import products from "../data/product";
 import bestProducts from "../data/bestSelling";
-export default function Home() {
+import {Link} from "react-router-dom";
+export default function Home(props) {
+    let {addProductToCart} = props;
     // use state hooks
     let [getdata, setData] = React.useState({});
 
@@ -185,7 +187,7 @@ export default function Home() {
              <div className="img-cotainer">
                  <img src={item.imageUrl} alt="" />
              </div>
-             <a href=""><div className="buy-now bg-danger text-white text-center p-md-2 p-1 lead">Shop Now</div></a>
+             <div className="buy-now bg-danger text-white text-center p-md-2 p-1 lead" onClick={() => addProductToCart(item)}>Shop Now</div>
         </div>
         })}
     </Slider>
@@ -223,6 +225,7 @@ export default function Home() {
         {bestProducts.map((item) => { 
         return <div>
             <div className="b-product-container border border-dark">
+                <Link to={`/product/${item.id}`}>
                 <div className="img-wraper"><img src={item.imageUrl} alt=""/></div>
                 <div className="title h4 mb-3 text-danger text-center text-truncate">{item.name}</div>
                 <div className="author price text-center">
@@ -231,6 +234,7 @@ export default function Home() {
                     <span className="regular-price"><del>${item.price.regular}</del></span>
                     </p>
                 </div>
+                </Link>
             </div>
         </div>
         })}

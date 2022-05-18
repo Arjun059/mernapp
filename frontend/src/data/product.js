@@ -36,8 +36,8 @@ let products = [
         publisher: "Viz Media",
         publisDate: "02 Dec 2013",
         binding: {
-            paperCover: true,
-            hardCover: false
+            paperCover: false,
+            hardCover: true
         }
 
     },

@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style/header.css"
-const Header = function() {
+const Header = function(props) {
+    let {cart} = props;
+    let cartLenght = cart.length;
 
     return (
     <div className="container-fluid header-container">
         <div className="row h-100">
             <div className="col-6 d-flex align-items-center col-md-3 order-1 order-md-1">
                 <div className="logo-wraper">
-                    <img src="./seagull.png" alt="" />
+                   <Link to="/"><img src="./seagull.png" alt="" /></Link>
                 </div>
             </div>
             <div className="col-12 p-2 order-3 col-md-6 order-md-2 ">
@@ -25,10 +27,10 @@ const Header = function() {
                         <Link to="/register"><i class="bi bi-person-circle"></i></Link>
                     </div>
                     <div className="col-auto">
-                     <a href=""><i class="bi bi-heart">{ 1 <= 0 ? "" : <span className="icon-nombers">1</span>}</i></a>
+                     <a href=""><i class="bi bi-heart">{ 1 <= 0 ? "" : <span className="icon-nombers">{1}</span>}</i></a>
                     </div>
                     <div className="col-auto">
-                        <a href=""><i class="bi bi-bag">{ 0 <= 0 ? "" : <span className="icon-nombers">1</span>}</i></a>
+                        <Link to="/cart"><i class="bi bi-bag">{ cartLenght <= 0 ? "" : <span className="icon-nombers">{cartLenght}</span>}</i></Link>
                     </div>
 
                 </div>
