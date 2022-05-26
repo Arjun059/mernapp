@@ -56,7 +56,7 @@ exports.RegisterControllerPost = async (req, res) => {
     if (errorMsg.length) return res.status(400).send(errorMsg)
     // Creating New User
     const newUser = await new User({
-        avtar: `https://mern-bookshops.herokuapp.com/uploads/${avtarPath}`,
+        avtar: avtarPath,
         firstName: firstname,
         lastName: lastname,
         email: email,
