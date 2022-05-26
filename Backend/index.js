@@ -5,6 +5,8 @@ const connectDB = require("./configDB")
 const isAuth = require("./Middleware/authCeck")
 const isAdmin = require("./Middleware/adminAuth")
 const path = require("path")
+const cors = require('cors')
+
 // dotenv 
 require("dotenv").config({})
 // db connection
@@ -12,9 +14,11 @@ connectDB(process.env.DB_URI)
 // express init
 const app = express()
 // body parser and stactic folder
-app.use(express.json())
+app.use(cors())
+app.use(express.json({limit: '6mb'}))
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
+
 
 app.use(session({
     secret: process.env.session_secret,
@@ -27,14 +31,16 @@ app.use(session({
 // import routes
 const userRoutes = require("./Routes/userRoutes")
 const adminRoutes = require("./Routes/adminRoutes")
+const productRoutes = require("./Routes/productRoutes")
+const createProduct = require("./Routes/createProduct")
+
 // Routes 
 app.use("/api/admin/", isAuth, isAdmin, adminRoutes)
 app.use("/api/users/", userRoutes)
+app.use("/api/product/", productRoutes)
+app.use("/api/create-product/", createProduct)
 
-app.get("/api/data", (req, res) => {
-    res.setHeader("Content-type", "application/json")
-    res.status(200).send({hello: 'hello world', boy: "cool boy"});
-})
+// serve frontend 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/build/index.html"))

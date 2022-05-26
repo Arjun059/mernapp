@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style/header.css"
 const Header = function(props) {
-    let {cart} = props;
+    let {cart, wishlist} = props.data;
     let cartLenght = cart.length;
+    let wishlistLenght = wishlist.length;
+    console.log(wishlist, "whislist is check")
 
     return (
     <div className="container-fluid header-container">
@@ -27,7 +29,7 @@ const Header = function(props) {
                         <Link to="/register"><i class="bi bi-person-circle"></i></Link>
                     </div>
                     <div className="col-auto">
-                     <a href=""><i class="bi bi-heart">{ 1 <= 0 ? "" : <span className="icon-nombers">{1}</span>}</i></a>
+                     <a href=""><i class="bi bi-heart">{ wishlistLenght <= 0 ? "" :  <span className="icon-nombers">{wishlistLenght}</span>}</i></a>
                     </div>
                     <div className="col-auto">
                         <Link to="/cart"><i class="bi bi-bag">{ cartLenght <= 0 ? "" : <span className="icon-nombers">{cartLenght}</span>}</i></Link>

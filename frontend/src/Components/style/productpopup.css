@@ -1,0 +1,33 @@
+.product-popup {
+    display: none;
+    background-color: beige;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+}
+.show-popup {
+    display: block;
+    animation: show-to-hide;
+    transition: all;
+    animation-duration: 1.4s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: backwards;
+
+}
+.close {
+    z-index: 2000;
+    cursor: pointer;
+}
+
+@keyframes show-to-hide {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+      
+    }
+    
+}

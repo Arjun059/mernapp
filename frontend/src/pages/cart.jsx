@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 // import products from "../data/product";
 const Cart = function(props) {
     let {cart, removeOneProductToCart, addProductToCart, removeProductToCart} = props;
-    
+    let [orderAmount, setOrderAmount] = useState(0)
+    useEffect(() => {
+    let totalAmount = cart.reduce((p,c,i,array) => p +(cart[i].price.sale * cart[i].qty), 0 )
+    setOrderAmount(totalAmount)
+    }, [cart])
     return <div>
         <div className="container-xxl">
             {cart.map((item) =>  
-            <div className="row my-4 mx-1 mx-md-4 border border-danger">
+            <div className="row my-4 mx-1 py-3 mx-md-4 border border-danger">
                 <div className="col-4">
                     <div className="img-wrapper"><img src={item.imageUrl} alt=""className="img-thumbnail"/></div>
                 </div>
@@ -31,10 +35,10 @@ const Cart = function(props) {
             )}
             <div className="container-xxl">
                 <div className="checkout-container mx-3 px-3" style={{maxWidth: "400px"}}>
-                    <div className="totol-amount h5 d-flex ">Totoal Amount  <span className="text-danger h5 ms-auto">--</span> </div>
+                    <div className="totol-amount h5 d-flex ">Totoal Amount:<span className="text-danger h5 ms-auto">{orderAmount}</span> </div>
                     <div className="discount h5 d-flex">Discount : <span className="ms-auto">--</span></div>
                     <div className="h5 d-flex">Tax : <span className="ms-auto">--</span></div>
-                    <div className="h5 d-flex ">Total Paybal Amount <span className="text-danger ms-auto h5">--</span> </div>
+                    <div className="h5 d-flex ">Total Paybal Amount <span className="text-danger ms-auto h5">{orderAmount}</span> </div>
                 </div>
             </div>
         </div>

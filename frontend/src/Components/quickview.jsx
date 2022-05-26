@@ -7,7 +7,7 @@ import bestProducts from "../data/bestSelling";
 
 const QuickView = function(props) {
     let { id } = useParams();
-    let {addProductToCart} = props;
+    let {addProductToCart, handleWishlist} = props;
     let [product, setProduct] = useState({price: {},binding: {}});
 
     useEffect(() => {
@@ -29,7 +29,10 @@ const QuickView = function(props) {
                         <div className="shordescription h5">{product.shortDescription}</div>
                         <div className="cover text-danger h6">Binding: {product.binding.hardCover == true ? "Hardcover": "Papercover"}</div>
                         <div className="releaseDate mb-4">Publis Date : {product.publisDate}</div>
-                        <div className="add-to-cart"><button className="btn btn-danger" onClick={() => addProductToCart(product)}>Add to cart</button></div>
+                        <div className="row">
+                        <div className="add-to-cart col-auto"><button className="btn btn-danger" onClick={() => addProductToCart(product)}>Add to cart</button></div>
+                        <div className="add-to-wishlist col-auto"><i class="bi bi-heart active-wish" style={{fontSize: "30px"}} onClick={()=>handleWishlist("Add", product)}></i></div>
+                        </div>
                     </div>
                     <div className="col-12"></div>
                     <div className="col-12 col-md-8">
