@@ -13,9 +13,6 @@ import QuickView from './Components/quickview';
 import Cart from './pages/cart';
 import ProductPopup from "./Components/productpopup";
 import {Route, Link,Routes} from "react-router-dom";
-// test 
-import TestForm from './pages/testform';
-
 
 function App() {
 
